@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 30 100% 50%;
+    --card: 0 0% 6%;
+    --card-foreground: 30 100% 50%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 30 100% 50%;
+    --primary: 30 100% 50%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 30 80% 60%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 30 30% 40%;
+    --accent: 30 100% 50%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 60% 20%;
+    --input: 30 60% 15%;
+    --ring: 30 100% 50%;
+    --chart-1: 30 100% 50%;
+    --chart-2: 120 60% 45%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 200 70% 50%;
+    --chart-5: 50 90% 55%;
+    --radius: 0.25rem;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 30 100% 50%;
+    --sidebar-primary: 30 100% 50%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 30 100% 50%;
+    --sidebar-border: 30 60% 20%;
+    --sidebar-ring: 30 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Custom scrollbar for terminal feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(0 0% 4%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(30 60% 20%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(30 100% 50%);
+}
+
+/* Scanline effect */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Glow effect for text */
+.text-glow {
+  text-shadow: 0 0 8px hsl(30 100% 50% / 0.5), 0 0 16px hsl(30 100% 50% / 0.2);
+}
+
+/* Pixel font rendering */
+.pixel-crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
